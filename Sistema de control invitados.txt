@@ -1,0 +1,110 @@
+control de asistencia
+
+panel lateral:
+
+.Usuario logueado
+
+.nuevo evento
+.proximos eventos
+.eventos pasados
+
+.cerrar sesion
+
+1.1. datos del evento
+
+organizador principal	// Bomberos de la Ciudad - UCA
+tematica		// 1ra Jornada en Gestión de Riesgos en Movilidad Eléctrica y Sustentable
+direccion		// Universidad Católica Argentina - Av. Alicia Moreau de Justo N° 1.300, C.A.B.A
+fecha_y_horario		// martes 10 de septiembre de 2024 a las 08:00 Hs
+
+1.2. invitados
+
+correo
+nombre
+apellido
+dni
+telefono
+institucion (universidad, fuerza, empresa o similar)
+cargo / jerarquia / puesto 
+
+1.3. enviar diploma
+
+detalles del diploma
+
+4. Usuarios
+
+5 Roles o permisos
+
+*****************************
+
+dashboard general del evento
+
+vista de kpis con 
+
+Invitados al evento
+asistencia
+horario de llegada
+
+*****************************
+
+------------------------------------------------------
+
+instalar laravel/ui
+artisan ui bootstrap
+correr npm install y npm run dev
+instalar autenticacion ui bootstrap --auth
+
+migrar tablas con php artisan migrate
+
+instalar ADMINLTE (copiar carpetas dist y plugins)
+
+instalar bootstrap y agregarlo en el indez para los iconos
+
+-------------------------------------------------------
+deshabilitar vistas en web.php:
+
+Auth::routes(['register'=>false]); // Deshabilitar ruta
+
+-------------------------------------------------------
+
+deshabilitar ingreso desde cualquier lado con middleware, solo ingresa desde el login, en web.php
+
+Route::get('/', function () {return view('index');})->middleware('auth');
+
+-------------------------------------------------------
+
+crear plantilla admin.blade.php para extender todo el codigo repetitivo
+
+crear migraciones (en miniscula y en plural)
+crear modelo (comenzando con mayuscula y en singular)
+
+tablas creadas con php artisan make:migration create_(nombre de la tabla en singular)_table
+
+creacion de modelos (funciones que administran las tablas)
+php artisan make:model (nombre de la funcion empezando con Mayuscula)
+
+revertir con rollback
+
+
+*********
+agregar pasos intermedios
+*********
+
+
+
+
+
+
+
+
+mysqlPhpMyAdmin
+usuario root
+password ...
+
+
+
+
+
+
+
+
