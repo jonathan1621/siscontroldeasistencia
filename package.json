@@ -19,5 +19,13 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "dependencies": {
+        "sweetalert2": "^11.14.3"
     }
 }

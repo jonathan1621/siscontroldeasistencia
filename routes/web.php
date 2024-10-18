@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {return view('index');})->middleware('auth');
 
 
-Auth::routes(['register'=>false]); // Deshabilitar ruta
+Auth::routes(['register'=>true]); // Deshabilitar ruta con false
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/NuevoEvento', function () {return view('NuevoEvento.index');})->middleware('auth');;
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('/eventos', \App\Http\Controllers\EventoController::class);
+
+
