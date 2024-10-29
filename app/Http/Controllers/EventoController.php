@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Invitado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -40,13 +41,12 @@ class EventoController extends Controller
 
         $evento->save();
 
-        return redirect()->route('eventos.index')->with('mensaje','Evento registrado');
-
+        return redirect()->route('eventos.index')->with('mensaje','Nuevo evento creado');
     }
 
     public function show($id) {
-        $evento = Evento::findOrFail($id);
-        return view ('eventos.show', ['evento'=>$evento]);
+        $evento = Evento::with('invitados')->findOrFail($id);
+        return view('eventos.show', ['evento' => $evento]);
     }
 
     public function edit($id) {
@@ -76,8 +76,11 @@ class EventoController extends Controller
     }
 
     public function destroy($id) {
+        Invitado::where('id_evento', $id)->delete();
+
         Evento::destroy($id);
 
-        return redirect()->route('eventos.index')->with('mensaje', 'Se elimino el evento de manera correcta');
+        return redirect()->route('eventos.index')->with('alerta_borrado', 'Se elimino el evento de manera correcta');
     }
+
 }

@@ -161,6 +161,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+<!-- Sweetalert2 -->
+<script src="{{asset('sweetalert2.all.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <script src="{{asset('../../plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -174,6 +178,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('../../plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('../../plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('../../plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script>
+    // Escuchar los botones de eliminar
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const borradoId = this.getAttribute('data-id');
+            const form = document.getElementById(`delete-form-${borradoId}`);
+
+            // Mostrar SweetAlert de confirmación
+            Swal.fire({
+                title: "¿Estás seguro?",
+                text: "¡Esta acción no se puede revertir!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Sí, eliminarlo",
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Enviar el formulario si se confirma la eliminación
+                    form.submit();
+                }
+            });
+        });
+    });
+});
+</script>
+
 
 </body>
 </html>

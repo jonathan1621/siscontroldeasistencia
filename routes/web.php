@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,9 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::resource('/eventos', \App\Http\Controllers\EventoController::class);
 
+Route::resource('/invitados', \App\Http\Controllers\InvitadoController::class);
+
+
+//Route::get('/invitados.crearinvitado', \App\Http\Controllers\InvitadoController::class);
+Route::get('/invitados/create/{id?}', [\App\Http\Controllers\InvitadoController::class, 'create'])->name('invitados.create');
 

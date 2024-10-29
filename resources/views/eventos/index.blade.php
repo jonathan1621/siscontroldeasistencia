@@ -21,11 +21,6 @@
                 <div class="card  card-outline card-primary">
                     <div class="card-header">
                         <h3 class="card-title"><b>Eventos</b></h3>
-                        {{-- <div class="card-tools">
-                            <a href="{{url('/eventos/create')}}" class="btn btn-primary">
-                                <i class="bi bi-file-plus"></i>Agregar Nuevo Evento
-                            </a>
-                        </div> --}}
                     </div>
 
                     <div class="card-body" style="display: block">
@@ -40,6 +35,7 @@
                                     <th>Estado</th>
                                     <th>Creado</th>
                                     <th>Acciones</th>
+                                    <th>Agregar Invitado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,18 +51,22 @@
                                         <td>{{ $evento->created_at->toDateString()}}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                <a href="{{url('eventos', $evento->id)}}" type="button" class="btn btn-success"><i class="bi bi-eye"></i></a>
-                                                <a href="{{route('eventos.edit', $evento->id)}}" type="button" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                                                <form action="{{url('eventos', $evento->id)}}" method="POST">
+                                                <a href="{{url('eventos', $evento->id)}}" type="button" class="btn btn-success" data-bs-toggle="tooltip" title="Ver evento"><i class="bi bi-eye"></i></a>
+                                                <a href="{{route('eventos.edit', $evento->id)}}" type="button" class="btn btn-warning" data-bs-toggle="tooltip" title="Modificar evento"><i class="bi bi-pencil"></i></a>
+                                                <form id="delete-form-{{ $evento->id }}" action="{{ url('eventos', $evento->id) }}" method="POST">
                                                     @csrf
-                                                    {{method_field('DELETE')}}
-                                                    <button type="submit" class="btn btn-danger">
+                                                    {{ method_field('DELETE') }}
+                                                    <button type="button" class="btn btn-danger delete-button" data-id="{{ $evento->id }}" data-bs-toggle="tooltip" title="Eliminar evento">
                                                         <i class="bi bi-trash"></i>
                                                     </button>
                                                 </form>
+
                                             </div>
                                         </td>
-                                    </tr>
+                                        <td>
+                                            <a href="{{ route('invitados.create', ['id' => $evento->id]) }}" type="button" class="btn btn-primary btn" style="width: 25%;" data-bs-toggle="tooltip" title="Agregar invitado"><i class="bi bi-person-fill-add"></i></a>
+                                        </td>
+                                        </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -121,13 +121,10 @@
                                         ],
                                     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
                                 });
-                          </script>
-
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
 @endsection
