@@ -32,3 +32,5 @@ Route::resource('/invitados', \App\Http\Controllers\InvitadoController::class);
 //Route::get('/invitados.crearinvitado', \App\Http\Controllers\InvitadoController::class);
 Route::get('/invitados/create/{id?}', [\App\Http\Controllers\InvitadoController::class, 'create'])->name('invitados.create');
 
+Route::get('invitados/{id}',[\App\Http\Controllers\InvitadoController::class, 'editasistencia']);// ->name('editasistencia');
+//href="{{url('invitados/'. $invitado->id)}}"

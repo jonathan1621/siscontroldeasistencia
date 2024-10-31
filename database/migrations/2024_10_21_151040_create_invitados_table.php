@@ -23,7 +23,7 @@ class CreateInvitadosTable extends Migration
             $table->string('telefono', 100);
             $table->string('institucion', 100);
             $table->string('cargo');
-            $table->string('asistencia');
+            $table->integer('asistencia')->default(0);
 
             //$table->foreign('id_evento')->references('id')->on('eventos');
             $table->foreign('id_evento')->references('id')->on('eventos')->onDelete('cascade');

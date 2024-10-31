@@ -109,4 +109,23 @@ class InvitadoController extends Controller
         return redirect()->to(url('eventos/' . $idEvento))->with('alerta_borrado', 'Se eliminó el invitado de manera correcta');
     }
 
+    public function editasistencia($id){
+
+        $invitado = Invitado::findOrFail($id);
+
+        if($invitado->asistencia) {
+            $invitado->asistencia = 0 ;
+        }
+        else{
+            $invitado->asistencia = 1 ;
+        }
+
+        // $invitado->asistencia = !$invitado->asistencia;
+
+        $invitado->save();
+
+        //return redirect()->back()->with('success', 'Estado de asistencia actualizado.');
+
+        return back();
+    }
 }

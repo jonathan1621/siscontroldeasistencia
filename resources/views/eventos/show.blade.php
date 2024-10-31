@@ -69,7 +69,7 @@
                                         <td>{{$invitado -> institucion}}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                {{$invitado -> id}}
+                                                {{-- {{$invitado -> id}} --}}
                                                 <a href="{{url('invitados/'. $invitado->id)}}" type="button" class="btn btn-success" data-bs-toggle="tooltip" title="Ver invitado"><i class="bi bi-eye"></i></a>
                                                 <a href="{{route('invitados.edit', $invitado->id)}}" type="button" class="btn btn-warning" data-bs-toggle="tooltip" title="Modificar invitado"><i class="bi bi-pencil"></i></a>
 
@@ -85,17 +85,15 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-focused bootstrap-switch-animate bootstrap-switch-on" style="width: 86px;">
-                                                <div class="bootstrap-switch-container" style="width: 126px; margin-left: 0px;"><span
-                                                        class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 42px;">SI</span><span
-                                                        class="bootstrap-switch-label" style="width: 42px;">&nbsp;</span><span
-                                                        class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 42px;">NO</span><input
-                                                        type="checkbox" name="my-checkbox" checked="" data-bootstrap-switch="">
-                                                </div>
-                                            </div>
+                                            {{-- <a href="{{ route('editasistencia', $invitado->id) }}" class="btn btn-sm btn-{{ $invitado->asistencia  ? 'success' : 'danger' }}">
+                                                {{ $invitado->asistencia  ? 'Presente' : 'Ausente' }}
+                                            </a> --}}
+                                            <a href="{{url('invitados/'. $invitado->id)}}" class="btn btn-sm btn-{{ $invitado->asistencia  ? 'success' : 'danger' }}">
+                                                {{ $invitado->asistencia  ? 'Presente' : 'Ausente' }}
+                                            </a>
                                         </td>
                                         <td>
-                                            <a href="" type="button" class="btn btn-primary btn" style="width: 80%"></i>Usar</a>
+                                            <a href="" type="button" class="btn btn-primary btn" style="width: 80%"><i class="bi bi-person-bounding-box"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
