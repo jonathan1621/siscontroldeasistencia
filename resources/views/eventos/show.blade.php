@@ -85,12 +85,13 @@
                                             </div>
                                         </td>
                                         <td>
-                                            {{-- <a href="{{ route('editasistencia', $invitado->id) }}" class="btn btn-sm btn-{{ $invitado->asistencia  ? 'success' : 'danger' }}">
-                                                {{ $invitado->asistencia  ? 'Presente' : 'Ausente' }}
-                                            </a> --}}
-                                            <a href="{{url('invitados/'. $invitado->id)}}" class="btn btn-sm btn-{{ $invitado->asistencia  ? 'success' : 'danger' }}">
-                                                {{ $invitado->asistencia  ? 'Presente' : 'Ausente' }}
-                                            </a>
+                                            <form action="{{ route('editasistencia', $invitado->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                <button type="submit" class="btn btn-sm btn-{{ $invitado->asistencia ? 'success' : 'danger' }}">
+                                                    {{ $invitado->asistencia ? 'Presente' : 'Ausente' }}
+                                                </button>
+                                            </form>
+
                                         </td>
                                         <td>
                                             <a href="" type="button" class="btn btn-primary btn" style="width: 80%"><i class="bi bi-person-bounding-box"></i></a>

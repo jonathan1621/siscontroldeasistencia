@@ -12,7 +12,6 @@
                         <form action="{{ url('/invitados')  }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                {{-- <input type="hidden" name="id_evento" value={{ $id }}> --}}
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Correo</label><b>*</b>
@@ -61,8 +60,6 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        {{-- <a href="{{ url()->back() }}" class="btn btn-secondary">Volver</a> --}}
-                                        {{-- <a href="{{url('eventos/' .$id)}}" type="submit" class="btn btn-primary">Guardar</a> --}}
                                         <a href="{{ url()->previous() }}" class="btn btn-secondary">Atras</a>
                                     </div>
                                 </div>

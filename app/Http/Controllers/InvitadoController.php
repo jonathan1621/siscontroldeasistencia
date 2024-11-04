@@ -89,15 +89,6 @@ class InvitadoController extends Controller
 
     }
 
-    // public function destroy($id) {
-    //     // Invitado::where('id_evento', $id)->delete();
-
-    //     Invitado::destroy($id);
-
-    //     return redirect()->to(url('eventos/' . $invitado->id_evento))->with('alerta_borrado', 'Se elimino el evento de manera correcta');
-
-    // }
-
     public function destroy($id) {
         // Eliminar el invitado según el ID
         $invitado = Invitado::findOrFail($id);  // Encuentra el invitado o muestra un error si no existe
@@ -109,22 +100,11 @@ class InvitadoController extends Controller
         return redirect()->to(url('eventos/' . $idEvento))->with('alerta_borrado', 'Se eliminó el invitado de manera correcta');
     }
 
-    public function editasistencia($id){
-
+    public function editasistencia($id)
+    {
         $invitado = Invitado::findOrFail($id);
-
-        if($invitado->asistencia) {
-            $invitado->asistencia = 0 ;
-        }
-        else{
-            $invitado->asistencia = 1 ;
-        }
-
-        // $invitado->asistencia = !$invitado->asistencia;
-
+        $invitado->asistencia = !$invitado->asistencia;
         $invitado->save();
-
-        //return redirect()->back()->with('success', 'Estado de asistencia actualizado.');
 
         return back();
     }

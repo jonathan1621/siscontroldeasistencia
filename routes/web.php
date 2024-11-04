@@ -17,20 +17,14 @@ use App\Http\Controllers\EventoController;
 
 Route::get('/', function () {return view('index');})->middleware('auth');
 
-
 Auth::routes(['register'=>true]); // Deshabilitar ruta con false
 
-
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::resource('/eventos', \App\Http\Controllers\EventoController::class);
 
 Route::resource('/invitados', \App\Http\Controllers\InvitadoController::class);
 
-
-//Route::get('/invitados.crearinvitado', \App\Http\Controllers\InvitadoController::class);
 Route::get('/invitados/create/{id?}', [\App\Http\Controllers\InvitadoController::class, 'create'])->name('invitados.create');
 
-Route::get('invitados/{id}',[\App\Http\Controllers\InvitadoController::class, 'editasistencia']);// ->name('editasistencia');
-//href="{{url('invitados/'. $invitado->id)}}"
+Route::post('invitados/{id}/editasistencia', [\App\Http\Controllers\InvitadoController::class, 'editasistencia'])->name('editasistencia');
